@@ -55,7 +55,7 @@ public class BoardController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBoard(@PathVariable("id") Long id,
+    public ResponseEntity<Void> deleteBoard(@PathVariable Long id,
                                             @AuthenticationPrincipal UserDetailsImpl userDetails) {
         boardService.deleteBoard(id, userDetails.getUser());
         return ResponseEntity.noContent().build();
@@ -68,7 +68,7 @@ public class BoardController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<BoardResponseDto> getBoard(@PathVariable(value = "boardId") Long id) {
+    public ResponseEntity<BoardResponseDto> getBoard(@PathVariable Long id) {
         BoardResponseDto responseDto = boardService.getBoardById(id);
         return ResponseEntity.ok(responseDto);
     }
